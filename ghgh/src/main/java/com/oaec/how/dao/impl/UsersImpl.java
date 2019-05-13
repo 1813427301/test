@@ -40,7 +40,6 @@ public class UsersImpl implements UsersDao {
     public Users findByName(String name) {
         String hql="FROM Users WHERE userName=:userName and status=1";
         Query<Users> query = session.createQuery(hql, Users.class);
-        query.setCacheable(true);
         Users user = query.setParameter("userName", name).uniqueResult();
         usersTest.getClose();
         return user;
