@@ -22,6 +22,7 @@ public class UsersImpl implements UsersDao {
     public List<Users> findAll() {
         String hql="FROM Users WHERE status=1";
         Query<Users> query = session.createQuery(hql, Users.class);
+        query.setCacheable(true);
         List<Users> usersList = query.list();
         return usersList;
     }
