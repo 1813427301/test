@@ -31,7 +31,6 @@ public class UsersImpl implements UsersDao {
     public Users findById(long id) {
         String hql="FROM Users WHERE id=:id and status=1";
         Query<Users> query = session.createQuery(hql, Users.class);
-        query.setCacheable(true);
         Users user = query.setParameter("id", id).uniqueResult();
         usersTest.getClose();
         return user;
