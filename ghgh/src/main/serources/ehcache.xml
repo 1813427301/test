@@ -1,0 +1,27 @@
+<ehcache>
+	<!-- 缓存空间不够用时，利用磁盘空间存储，下面是指定存储目录 -->
+    <diskStore path="D:/temp"/>
+	<!-- 
+		maxElementsInMemory：最大的缓存数量
+		eternal：是否永不过期
+		timeToIdleSeconds：空闲缓存对象的时限
+		timeToLiveSeconds：对象存活的时限
+		overflowToDisk：缓存空间不够用时是否启动磁盘来保存
+	 -->
+	 <!-- 默认缓存设置 -->
+    <defaultCache
+        maxElementsInMemory="10000"
+        eternal="false" 
+        timeToIdleSeconds="120"
+        timeToLiveSeconds="120"
+        overflowToDisk="true"
+        />
+	<!-- 对订单对象进行二级缓存 -->
+    <cache name="com.oaec.how.entity.Users"
+        maxElementsInMemory="1000"
+        eternal="false"
+        timeToIdleSeconds="50"
+        timeToLiveSeconds="120"
+        overflowToDisk="true"
+        />
+</ehcache>

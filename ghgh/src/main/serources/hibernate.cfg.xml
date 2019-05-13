@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<!-- Hibernate核心配置文件 -->
+<hibernate-configuration>
+    <session-factory>
+        <!-- 数据库连接设置 -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/hibernate_demo?useUnicode=true&amp;characterEncoding=utf-8</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">123456</property>
+        <!-- 数据库连接池的连接数 -->
+        <property name="connection.pool_size">10</property>
+        
+        <!-- 数据库SQL方言 -->
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+        <!-- 启用当前session上下文的自动管理 -->
+        <!-- 当使用getCurrentSession()方法获取session时，必须要进行的设置 -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- 是否打印输出sql语句 -->
+        <property name="show_sql">true</property>
+
+        <!-- 在启动时自动建表 -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- 配置二级缓存的实现CacheProvider -->
+        <!-- Hibernate4.x+中使用 -->
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+        <!-- 开启二级缓存(Hibernate4.x+中是默认开启的，Hibernate3.x中默认是不开启需要配置方可开启) -->
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <!-- 开启查询缓存功能(针对Query和Criteria查询，如:list()、iterate()等方法使用 -->
+        <property name="hibernate.cache.use_query_cache">true</property>
+
+
+        <!-- 配置映射类 -->
+        <mapping class="com.oaec.how.entity.Users"></mapping>
+
+    </session-factory>
+</hibernate-configuration>
