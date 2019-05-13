@@ -24,7 +24,6 @@ public class UsersImpl implements UsersDao {
         Query<Users> query = session.createQuery(hql, Users.class);
         query.setCacheable(true);
         List<Users> usersList = query.list();
-        usersTest.getClose();
         return usersList;
     }
 
